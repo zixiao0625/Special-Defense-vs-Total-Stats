@@ -12,11 +12,18 @@
 
       "Electric": "#F28E2B",
 
+
+            "Dragon": "#B1A008",
+
+
       "Fairy": "#FFBE7D",
 
       "Fighting": "#59A14F",
 
       "Fire": "#8CD17D",
+
+
+            "Flying": "#C05B88",
 
       "Ghost": "#B6992D",
 
@@ -27,6 +34,8 @@
       "Ice": "#FABFD2",
 
       "Normal": "#E15759",
+
+        "Rock": "#A01758",
 
       "Poison": "#FF9D9A",
 
@@ -54,7 +63,7 @@ const legendary = ['all', 'True', 'False'];
     function init() {
       // load data and append svg to body
       svgContainer = d3.select('body').append("svg")
-          .attr('width', measurements.width + 50)
+          .attr('width', measurements.width + 160)
           .attr('height', measurements.height + 50);
       d3.csv("pokemon.csv")
           .then((csvData) => data = csvData)
@@ -112,7 +121,7 @@ const legendary = ['all', 'True', 'False'];
                             .attr('y', 500)
                             // d.length is the count of values in the bin
                             .attr('x', function(d,i) {
-                              return 20 + i * 55;
+                              return 15 + i * 50;
                             })
                             .attr('width', 30)
                             .attr('height', 20)
@@ -121,13 +130,15 @@ const legendary = ['all', 'True', 'False'];
                                 return colors[type];
                               }
                             })
+                            .style("display", "flex")
+                            .style("flex-wrap", "wrap");
                   // legend labels
                   svgContainer.selectAll('.rect')
                       .data(cols)
                     .enter().append("text")
                     .attr("y", 540)
                     .attr('x', function(d,i) {
-                      return 20 + i * 55;
+                      return 15 + i * 50;
                     })
                     .style("font-size","10pt")
                     .text(function(d) {     for (let type in d) {
